@@ -1,29 +1,36 @@
-<h1>Listing weight_entries</h1>
-
-<table>
+<%- model_class = WeightEntry -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => WeightEntry %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Weight</th>
-      <th>User</th>
-      <th>Competition</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:weight) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @weight_entries.each do |weight_entry| %>
       <tr>
+        <td><%= weight_entry.id %></td>
         <td><%= weight_entry.weight %></td>
-        <td><%= weight_entry.user %></td>
-        <td><%= weight_entry.competition %></td>
-        <td><%= link_to 'Show', weight_entry %></td>
-        <td><%= link_to 'Edit', edit_weight_entry_path(weight_entry) %></td>
-        <td><%= link_to 'Destroy', weight_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l weight_entry.created_at, format: :long %></td>
+        <td>
+          <%= link_to weight_entry_path(weight_entry), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to weight_entry_path(weight_entry), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Weight entry', new_weight_entry_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_weight_entry_path,
+            :class => 'btn btn-primary' %>

@@ -1,6 +1,5 @@
-<h1>Editing weight_entry</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @weight_entry %> |
-<%= link_to 'Back', weight_entries_path %>
+<%- model_class = WeightEntry -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => WeightEntry %></h1>
+</div>
+<%= render :partial => 'form' %>
