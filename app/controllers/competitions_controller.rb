@@ -1,5 +1,5 @@
 class CompetitionsController < ApplicationController
-  before_action :set_competition, only: [:show, :edit, :update, :destroy]
+  before_action :set_competition, only: [:show, :edit, :update, :destroy, :vote]
 
   # GET /competitions
   # GET /competitions.json
