@@ -1,4 +1,5 @@
 ActiveAdmin.register Competition do
+  permit_params :start_date, :end_date, :title
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
