@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :weight_entries
+
   resources :competitions do
   #->Prelang (voting/acts_as_votable)
   member do

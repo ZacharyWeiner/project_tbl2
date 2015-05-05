@@ -1,0 +1,13 @@
+<%= simple_form_for(@weight_entry) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :weight %>
+    <%= f.association :user %>
+    <%= f.association :competition %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
