@@ -1,24 +1,28 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Competition -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Competition %></h1>
+</div>
 
-<p>
-  <strong>Company:</strong>
-  <%= @competition.company %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:start_date) %></dt>
+      <dd><pre class="prettyprint"><%= @competition.start_date %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:end_date) %></dt>
+      <dd><pre class="prettyprint"><%= @competition.end_date %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:title) %></dt>
+      <dd><pre class="prettyprint"><%= @competition.title %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @competition.start_date %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              competitions_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_competition_path(@competition), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              competition_path(@competition),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>End date:</strong>
-  <%= @competition.end_date %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @competition.title %>
-</p>
-
-<%= link_to 'Edit', edit_competition_path(@competition) %> |
-<%= link_to 'Back', competitions_path %>

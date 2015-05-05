@@ -1,6 +1,5 @@
-<h1>Editing competition</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @competition %> |
-<%= link_to 'Back', competitions_path %>
+<%- model_class = Competition -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Competition %></h1>
+</div>
+<%= render :partial => 'form' %>
